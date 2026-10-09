@@ -39,6 +39,7 @@ export class App implements OnInit {
   readonly selectedStreak = computed(() =>
     this.streaks().find((streak) => streak.id === this.selectedId()) ?? this.streaks()[0] ?? null,
   );
+  readonly totalStreaks = computed(() => this.streaks().length);
   readonly calendarDays = computed(() => this.createCalendarDays());
   readonly currentStreak = computed(() => {
     const habit = this.selectedStreak();

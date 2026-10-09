@@ -22,6 +22,18 @@ describe('App', () => {
     expect(compiled.querySelector('.dashboard')).toBeTruthy();
   });
 
+  it('should expose the total number of streaks', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    app.streaks.set([
+      { id: 'one', title: 'First', emoji: '📚', color: '#ff8b5e', createdAt: '2026-09-01', completedDates: ['2026-09-01'] },
+      { id: 'two', title: 'Second', emoji: '🏃', color: '#8978e8', createdAt: '2026-09-01', completedDates: [] },
+      { id: 'three', title: 'Third', emoji: '🧘', color: '#55a98c', createdAt: '2026-09-01', completedDates: ['2026-09-02', '2026-09-03'] },
+    ]);
+
+    expect(app.totalStreaks()).toBe(3);
+  });
+
   it('should delete a streak after confirmation and select the next one', () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
